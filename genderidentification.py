@@ -1,4 +1,4 @@
-pip install transformers torch torchaudio pillow
+
 from transformers import pipeline
 from PIL import Image
 
