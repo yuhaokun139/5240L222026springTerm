@@ -49,6 +49,7 @@ def main():
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         
         if st.button("Play Audio"):
+            text2audio(story_text) = audio_data
             audio_array = audio_data["audio"]
             sample_rate = audio_data["sampling_rate"]
             st.audio(audio_array, sample_rate=sample_rate)
