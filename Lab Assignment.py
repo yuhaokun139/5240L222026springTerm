@@ -30,7 +30,7 @@ def text2story(text):
 def text2audio(story_text):
     audio_pipe = pipeline("text-to-audio", 
                           model="Matthijs/mms-tts-eng")
-    audio_data = audio_pipe(story)    
+    audio_data = audio_pipe(story_text)    
     return audio_data
 
 # main part
@@ -49,9 +49,6 @@ def main():
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         
         if st.button("Play Audio"):
-            audio_pipe = pipeline("text-to-audio", 
-                                  model="Matthijs/mms-tts-eng")
-            audio_data = audio_pipe(story)   
             audio_array = audio_data["audio"]
             sample_rate = audio_data["sampling_rate"]
             st.audio(audio_array, sample_rate=sample_rate)
