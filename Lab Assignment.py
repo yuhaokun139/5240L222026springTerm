@@ -12,7 +12,8 @@ from transformers import pipeline
 # function part
 # img2text
 def img2text(url):
-    image_to_text_model = pipeline("image-to-text", model="Salesforce/blip-image-captioning-base")
+    image_to_text_model = pipeline("image-to-text", 
+                                   model="Salesforce/blip-image-captioning-base")
     text = image_to_text_model(url)[0]["generated_text"]
     return text
 
@@ -27,7 +28,8 @@ def text2story(text):
 
 # text2audio
 def text2audio(story_text):
-    audio_pipe = pipeline("text-to-audio", model="Matthijs/mms-tts-eng")
+    audio_pipe = pipeline("text-to-audio", 
+                          model="Matthijs/mms-tts-eng")
     audio_data = audio_pipe(story)    
     return audio_data
 
@@ -47,6 +49,9 @@ def main():
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         
         if st.button("Play Audio"):
+            audio_pipe = pipeline("text-to-audio", 
+                                  model="Matthijs/mms-tts-eng")
+            audio_data = audio_pipe(story)   
             audio_array = audio_data["audio"]
             sample_rate = audio_data["sampling_rate"]
             st.audio(audio_array, sample_rate=sample_rate)
