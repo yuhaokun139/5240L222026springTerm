@@ -1,4 +1,4 @@
 # Import part
 import streamlit as st
 
-st.write("Hello, *World!* :sungluasses:")
+st.write("Hello, *World!* :sunglasses:")
