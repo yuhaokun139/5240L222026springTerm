@@ -51,3 +51,4 @@ def main():
             sample_rate = audio_data["sampling_rate"]
             st.audio(audio_array, sample_rate=sample_rate)
 
+main()
