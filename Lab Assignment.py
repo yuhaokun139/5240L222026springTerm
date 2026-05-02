@@ -43,6 +43,8 @@ def main():
         bytes_data = uploaded_file.getvalue()
         with open(uploaded_file.name, "wb") as file:
         file.write(bytes_data)
+
+        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         
         if st.button("Play Audio"):
             audio_array = audio_data["audio"]
