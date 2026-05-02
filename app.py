@@ -12,13 +12,14 @@ from transformers import pipeline
 
 # Function part
 def img2text(url):
-    image_to_text_model = pipeline("image-to-text", model="Salesforce/blip-image-captioning-base")
+    image_to_text_model = pipeline("image-to-text", 
+                                   model="Salesforce/blip-image-captioning-base")
     text = image_to_text_model(url)[0]["generated_text"]
     return text
 
 # Main part
 st.set_page_config(page_title="Your Image to Audio Story", page_icon="🦜")
-st.header("ISOM5240:Turn Your Image to Audio Story")
+st.header("ISOM5240: Turn Your Image to Audio Story")
 
 uploaded_file = st.file_uploader("Select an Image...")
 
@@ -37,7 +38,8 @@ if uploaded_file is not None:
 
     # Stage 2: Text to Story (Inline)
     st.text('Generating a story...')
-    story_pipe = pipeline("text-generation", model="pranavpsv/genre-story-generator-v2")
+    story_pipe = pipeline("text-generation", 
+                          model="pranavpsv/genre-story-generator-v2")
     story_results = story_pipe(scenario)
     story = story_results[0]['generated_text']
     st.write(f"**Story:** {story}")
