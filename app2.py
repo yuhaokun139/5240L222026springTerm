@@ -1,11 +1,3 @@
-st.title
-st.write
-st.file_uploader
-st.image
-st.spinner
-st.audio
-st.button
-
 import streamlit as st
 from PIL import Image
 import time
