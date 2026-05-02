@@ -1,3 +1,14 @@
+# Program title: Storytelling App
+
+# Import part
+import streamlit as st
+
+# Program title: Storytelling App
+
+# Import part
+import streamlit as st
+from transformers import pipeline
+
 # function part
 # img2text
 def img2text(url):
@@ -32,10 +43,11 @@ def main():
         bytes_data = uploaded_file.getvalue()
         with open(uploaded_file.name, "wb") as file:
         file.write(bytes_data)
-    if st.button("Play Audio"):
-        audio_array = audio_data["audio"]
-        sample_rate = audio_data["sampling_rate"]
-        st.audio(audio_array, sample_rate=sample_rate)
+        
+        if st.button("Play Audio"):
+            audio_array = audio_data["audio"]
+            sample_rate = audio_data["sampling_rate"]
+            st.audio(audio_array, sample_rate=sample_rate)
         
 main()
 
