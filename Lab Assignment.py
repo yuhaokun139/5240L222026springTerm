@@ -57,9 +57,9 @@ def main():
                 st.write(f"**Story:** {story}")
 
             with st.spinner("Loading image..."):
+                audio_data = text2audio(story)
                 audio_array = audio_data["audio"]
                 sample_rate = audio_data["sampling_rate"]
-                audio_data = text2audio(story)
                 st.audio(audio_array, sample_rate=sample_rate)
 
 main()
