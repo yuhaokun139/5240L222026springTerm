@@ -21,9 +21,7 @@ def img2text(url):
 def text2story(text):
     story_pipe = pipeline("text-generation", 
                           model="pranavpsv/genre-story-generator-v2")
-    story_text = story_pipe(scenario)
-    story = story_results[0]['generated_text']
-    st.write(f"**Story:** {story}")   
+    story = story_results[0]['generated_text']  
     return story_text
 
 # text2audio
@@ -47,6 +45,17 @@ def main():
             file.write(bytes_data)
 
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        
+        st.text('Processing img2text...')
+        scenario = img2text(uploaded_file.name)
+        st.write(f"**Scenario:** {scenario}")
+
+        st.text('Generating a story...')
+        story_results = story_pipe(scenario)
+        story = story_results[0]['generated_text']
+        st.write(f"**Story:** {story}")
+
+        st.text('Generating audio data...')
         
         if st.button("Play Audio"):
             audio_data = text2audio(story_text)
