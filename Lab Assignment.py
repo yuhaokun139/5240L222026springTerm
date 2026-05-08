@@ -21,7 +21,7 @@ def img2text(url):
 def text2story(text):
     story_pipe = pipeline("text-generation", 
                           model="pranavpsv/genre-story-generator-v2")
-    story_results = story_pipe(text, do_sample = True)
+    story_results = story_pipe(text)
     story = story_results[0]['generated_text']
     return story
     
