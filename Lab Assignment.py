@@ -46,10 +46,11 @@ def main():
             file.write(bytes_data)
 
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-                
+
+        scenario = img2text(uploaded_file.name)
+        story = text2story(scenario)
+        
         if st.button("Play Audio"):
-            scenario = img2text(uploaded_file.name)
-            story = text2story(scenario)
             audio_data = text2audio(story)
             audio_array = audio_data["audio"]
             sample_rate = audio_data["sampling_rate"]
