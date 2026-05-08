@@ -53,11 +53,11 @@ def main():
                 st.write(f"**Scenario:** {scenario}")
 
             with st.spinner("Loading image..."):
-                text = text2story(scenario)
+                story = text2story(scenario)
                 st.write(f"**Story:** {story}")
 
             with st.spinner("Loading image..."):
-                audio_data = text2audio(text)
+                audio_data = text2audio(story)
                 st.audio(audio_array, sample_rate=sample_rate)
 
 main()
