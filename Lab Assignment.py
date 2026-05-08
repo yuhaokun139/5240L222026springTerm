@@ -49,7 +49,7 @@ def main():
                 
         if st.button("Play Audio"):
             with st.spinner("Loading image..."):
-                story_results = story_pipe(scenario)
+                scenario = img2text(uploaded_file.name)
                 st.write(f"**Scenario:** {scenario}")
 
             with st.spinner("Loading image..."):
